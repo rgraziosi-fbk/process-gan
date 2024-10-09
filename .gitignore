@@ -1,0 +1,10 @@
+data/
+.idea/
+.vscode/
+__pycache__/
+
+.DS_Store
+**.png
+**.pth
+**.txt
+**.csv
