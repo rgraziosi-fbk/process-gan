@@ -54,12 +54,12 @@ class ProcessGAN_Time:
         self.device = config['device']
 
         # FRANCESCO: "mps" to use gpu on Mac. Modify to use Nvidia gpu in place
-        if torch.backends.mps.is_available() and self.device == 'mps':
-            self.device = torch.device("mps")
-            print('Using MPS')
-        else:
-            torch.device("cpu")
-            print('Using CPU')
+        # if torch.backends.mps.is_available() and self.device == 'mps':
+        #     self.device = torch.device("mps")
+        #     print('Using MPS')
+        # else:
+        #     torch.device("cpu")
+        #     print('Using CPU')
 
         self.gd_ratio = config['gd_ratio']
         self.data = config['data']
