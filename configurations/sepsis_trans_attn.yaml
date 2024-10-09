@@ -3,7 +3,7 @@ data: sepsis
 device: cpu
 drop_out_act: 0.1
 drop_out_d: 0.1
-emb_size_act: 4
+emb_size_act: 8
 epochs: 2000
 epochs_pre_train: 200
 gd_ratio: 2
