@@ -18,8 +18,13 @@ Our ProcessGAN model can generate process data from random noise, which can pres
 
 ### Requirements
 * Python 3.10
-* Pytorch 1.13.1
-* Matplotlib 
+* pytorch==1.13.1
+* numpy==1.26.4
+* matplotlib
+* pandas
+* pyyaml
+* seaborn
+* editdistance
 
 ### Usage
 
