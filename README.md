@@ -29,7 +29,7 @@ Our ProcessGAN model can generate process data from random noise, which can pres
 ### Usage
 
 #### Data preparation 
-To train our model and test the performance:
+To preprocess the dataset:
 ```bash
 python utils/create_input_files.py --data [DATASET] --num [NUM] --caseID [CASE ID] --activity [ACTIVITY] --starttime [TIMESTAMP]
 ```
@@ -40,6 +40,8 @@ python utils/create_input_files.py --data [DATASET] --num [NUM] --caseID [CASE I
 	•	--caseID: The column name in the CSV file that identifies unique cases.
 	•	--activity: The column name in the CSV file that represents the activity.
 	•	--starttime: The column name in the CSV file that contains timestamps.
+
+**Note**: if you encounter issues, try to delete the already existing txt and csv files and generate new ones with the command above.
 
 
 #### Training 
