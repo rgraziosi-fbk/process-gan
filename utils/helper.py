@@ -26,7 +26,7 @@ def normalize_gen_timestamp(gen_list_time):
 
 def normalize(values):
     total = sum(values)+(1e-9)
-    return [value / total for value in values]
+    return [value / total for value in values] + [total] # also append the total, in order to be able to de-normalize after generation
 
 
 def generate_random_data(bs, vocab_size, seq_len):
