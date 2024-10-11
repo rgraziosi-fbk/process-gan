@@ -3,13 +3,16 @@ import pandas as pd
 import pm4py
 import datetime
 import copy
+import os
 
-ACTIVITY_FILE = '300_result_trans.txt'
-TIMESTAMP_FILE = '300_result_trans_time.txt'
+ACTIVITY_FILE = '/Users/riccardo/Documents/pdi/topics/data-augmentation/dev/ProcessGAN/result/sepsis/10102024/1000_result_trans.txt'
+TIMESTAMP_FILE = '/Users/riccardo/Documents/pdi/topics/data-augmentation/dev/ProcessGAN/result/sepsis/10102024/1000_result_trans_time.txt'
+ACTIVITY_DICT_FILE = '/Users/riccardo/Documents/pdi/topics/data-augmentation/dev/ProcessGAN/data/data_info/sepsis/act_dict.csv'
 
 # The timestamp from which to start generating new traces (could be the first timestamp of test set, or the last timestamp of train set)
 START_TIMESTAMP = datetime.datetime.strptime('26.10.2014 20:21:00', '%d.%m.%Y %H:%M:%S')
 
+OUTPUT_DIR = 'generated_logs'
 OUTPUT_FILENAME = 'gen'
 CSV_SEP = ';'
 GEN_LOG_SIZE = 157
@@ -20,7 +23,7 @@ TIMESTAMP_KEY = 'time:timestamp'
 
 
 # Read the CSV file into a DataFrame
-df = pd.read_csv('act_dict.csv', header=None, names=['activity_name', 'activity_idx'])
+df = pd.read_csv(ACTIVITY_DICT_FILE, header=None, names=['activity_name', 'activity_idx'])
 
 # Convert the DataFrame to a dictionary
 activity_dict = df.set_index('activity_name')['activity_idx'].to_dict()
@@ -87,9 +90,9 @@ df[CASE_KEY] = df[CASE_KEY].astype(str)
 df[TIMESTAMP_KEY] = pd.to_datetime(df[TIMESTAMP_KEY])
 
 # Save df to csv and xes
-df.to_csv(f'{OUTPUT_FILENAME}.csv', index=False)
+df.to_csv(os.path.join(OUTPUT_DIR, f'{OUTPUT_FILENAME}.csv'), index=False)
 log = pm4py.format_dataframe(df, case_id=CASE_KEY, activity_key=ACTIVITY_KEY)
-pm4py.write_xes(log, f'{OUTPUT_FILENAME}.xes')
+pm4py.write_xes(log, os.path.join(OUTPUT_DIR, f'{OUTPUT_FILENAME}.xes'))
 
 
 # Split the log into splits of size GEN_LOG_SIZE
@@ -119,6 +122,6 @@ if len(splits[0]) < GEN_LOG_SIZE:
 # save splits
 for i, split in enumerate(splits):
   split_df = df[df[CASE_KEY].isin(split)]
-  split_df.to_csv(f'{OUTPUT_FILENAME}_{i}.csv', index=False, sep=CSV_SEP)
+  split_df.to_csv(os.path.join(OUTPUT_DIR, f'{OUTPUT_FILENAME}_{i}.csv'), index=False, sep=CSV_SEP)
   split_log = pm4py.format_dataframe(split_df, case_id=CASE_KEY, activity_key=ACTIVITY_KEY)
-  pm4py.write_xes(split_log, f'{OUTPUT_FILENAME}_{i}.xes')
+  pm4py.write_xes(split_log, os.path.join(OUTPUT_DIR, f'{OUTPUT_FILENAME}_{i}.xes'))
