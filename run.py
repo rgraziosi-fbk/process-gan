@@ -2,6 +2,7 @@ import argparse
 import os
 import numpy as np
 import yaml
+import time
 from nets.process_gan_time import ProcessGAN_Time
 import utils.helper as helper
 
@@ -54,4 +55,9 @@ if __name__ == '__main__':
     config['res_path_duration'] = res_path_duration
     config['res_path_duration'] = res_path_duration
 
+    start_time = time.time()
+
     run_gan_time(config)
+
+    end_time = time.time()
+    print(f"Training+evaluation time: {end_time - start_time} seconds")

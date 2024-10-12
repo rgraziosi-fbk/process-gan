@@ -257,6 +257,8 @@ class ProcessGAN_Time:
 
             # Generate and evaluate samples every 100 epochs.
             if big_epoch % 100 == 0:
+                start_evaluation_time = time.time()
+
                 state_dict_g = {"net": g_model.state_dict(),
                                 'optimizer': gd_optimizer.state_dict(),
                                 'epoch': big_epoch}
@@ -279,6 +281,9 @@ class ProcessGAN_Time:
                     filehandle.write('%s\n' % big_epoch)
                 eval_result(self.save_path + 'stats/' + str(big_epoch) + '_', gen_list, gen_list_time, test_list,
                             test_list_time, self.vocab_num_act, self.data)
+                
+                end_evaluation_time = time.time()
+                print(f"Evaluation epoch {big_epoch} time: {end_evaluation_time - start_evaluation_time} seconds")
 
     def get_act_loss(self, g_output_t_act, g_authentic_act, batch_size):
         """get the additional activity distribution loss between generated sequences and real sequences"""
