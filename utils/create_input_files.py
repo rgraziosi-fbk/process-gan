@@ -1,5 +1,6 @@
 import argparse
 import os
+import time
 from log2seq import model
 from timestamp_process import process_timestamp_sep
 
@@ -26,9 +27,14 @@ def main():
     save_file2 = os.path.join(base_path, "data", "data_time", args.data, "data_seq",
                               args.data + '_time_duration_norm.txt')
 
+    start_time = time.time()
+
     # Run the model and timestamp process
     model(fname, foldername, args.data, data_res, args.num, args.caseID, args.activity, args.starttime)
     process_timestamp_sep(fname, save_file, save_file2, args.caseID, args.starttime)
+
+    end_time = time.time()
+    print(f"Preprocessing time: {end_time - start_time} seconds")
 
 
 if __name__ == '__main__':
