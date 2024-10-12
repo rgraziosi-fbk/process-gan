@@ -17,9 +17,9 @@ n_layer_act: 3
 n_layer_d: 2
 seed: 88
 seq_len: 59
-seq_num: 782
+seq_num: 625
 test_size: 0
-train_size: 782
+train_size: 625
 valid_size: 0
 vocab_num_act: 16
 w_a: 100
