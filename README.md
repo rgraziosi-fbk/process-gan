@@ -28,11 +28,27 @@ Our ProcessGAN model can generate process data from random noise, which can pres
 
 ### Usage
 
+Preliminaries:
+
+Adjust the configurations/sepsis_trans.yaml and sepsis_trans_attn.yaml files
+
+
+Data preparation:
+
+python utils/create_input_files.py --data bpic2012_a --num 3748 --caseID Case\ ID --activity Activity --starttime time:timestamp
+
+
+Training and generation:
+
+python run.py --mode act_time_loss --model trans_attn --data bpic2012_a
+
 #### Data preparation 
 To preprocess the dataset:
 ```bash
 python utils/create_input_files.py --data [DATASET] --num [NUM] --caseID [CASE ID] --activity [ACTIVITY] --starttime [TIMESTAMP]
 ```
+
+
 **Arguments**
 
 	•	--data: The name of the dataset (without the .csv extension). This file should be placed in the data/data_raw/ folder. For example, if you have data/data_raw/sepsis.csv, you would pass --data sepsis.
