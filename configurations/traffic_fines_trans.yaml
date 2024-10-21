@@ -1,5 +1,5 @@
 batch_size: 64
-data: sepsis
+data: traffic_fines
 device: cuda:0
 drop_out_act: 0.1
 drop_out_d: 0.1
@@ -16,10 +16,10 @@ n_hid_d: 8
 n_layer_act: 3
 n_layer_d: 2
 seed: 88
-seq_len: 50
-seq_num: 625
+seq_len: 20
+seq_num: 103692
 test_size: 0
-train_size: 625
+train_size: 103692
 valid_size: 0
 vocab_num_act: 16
 w_a: 100

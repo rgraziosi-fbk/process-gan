@@ -1,9 +1,9 @@
 batch_size: 64
-data: bpic2012_a
-device: cpu
+data: bpic2012_b
+device: cuda:0
 drop_out_act: 0.1
 drop_out_d: 0.1
-emb_size_act: 4
+emb_size_act: 8
 epochs: 2000
 epochs_pre_train: 200
 gd_ratio: 2
@@ -17,9 +17,9 @@ n_layer_act: 3
 n_layer_d: 2
 seed: 88
 seq_len: 100
-seq_num: 4685
+seq_num: 3748
 test_size: 0
-train_size: 4685
+train_size: 3748
 valid_size: 0
 vocab_num_act: 36
 w_a: 100
