@@ -155,7 +155,7 @@ def get_time_seqs_from_path(path):
     f = open(path)
     all_seq = [[float(ind) for ind in line.split()] for line in f]
     all_seq_norm = []
-    for i in range(len(all_seq)):
+    for i in range(len(all_seq)-1): # -1 because last timestamp is the sum of all timestamps of the sequence
         if len(all_seq[i]) == 0:
             continue
         all_seq[i][0] = 0
