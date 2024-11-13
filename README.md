@@ -40,7 +40,7 @@ python utils/create_input_files.py --data bpic2012_a --num 3748 --caseID Case\ I
 
 Training and generation:
 
-python run.py --mode act_time_loss --model trans_attn --data bpic2012_a
+python run.py --data bpic2012_a
 
 #### Data preparation 
 To preprocess the dataset:

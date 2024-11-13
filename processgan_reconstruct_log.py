@@ -12,6 +12,9 @@ ACTIVITY_DICT_FILE = '/Users/riccardo/Documents/pdi/topics/data-augmentation/dev
 # The timestamp from which to start generating new traces (could be the first timestamp of test set, or the last timestamp of train set)
 START_TIMESTAMP = datetime.datetime.strptime('26.10.2014 20:21:00', '%d.%m.%Y %H:%M:%S')
 
+# sepsis: 26.10.2014 12:01:08
+# bpic2012: 27.01.2012 16:58:46
+
 OUTPUT_DIR = 'generated_logs'
 OUTPUT_FILENAME = 'gen'
 CSV_SEP = ';'
